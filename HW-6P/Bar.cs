@@ -102,11 +102,11 @@ namespace HW_6P
                 Console.ReadKey();
                 if (Round == 10)
                 {
-                    Round = 1;
+                    Round -= 9;
                 }
                 else
                 {
-                    Round = Round++;
+                    Round++;
                 }
             }                       
         }
