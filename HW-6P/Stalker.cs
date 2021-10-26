@@ -7,10 +7,10 @@ namespace HW_6P
     public class Stalker : Visitor
     {
         public bool Hit { get; set; } = false;
-        public override void Action(Drink Drink, List<Visitor> Visitors, int e)
+        public override void Action(List<Drink> Drinks, int d, List<Visitor> Visitors, int e)
         {
             Hitting(Visitors, e);
-            GetDrink(Drink);
+            GetDrink(Drinks[d]);
         }
         public void Hitting(List<Visitor> Visitors, int e) 
         {

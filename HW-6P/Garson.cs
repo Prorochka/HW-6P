@@ -59,7 +59,7 @@ namespace HW_6P
         public static int Randomaiser(int min, int max)
         {
             var r = new Random();
-            int result = r.Next(min, max+1);
+            int result = r.Next(min, max);
             return result;
         }
     }

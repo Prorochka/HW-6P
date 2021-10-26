@@ -38,7 +38,7 @@ namespace HW_6P
                 if (choseCl == 1) { Console.WriteLine("this is a tolchok"); }
                 if (choseCl == 2) { Console.WriteLine("this is a stalker"); }
                 if (choseCl == 3) { Console.WriteLine("this is a biker"); }
-                Console.WriteLine("Enten visitor name:");
+                Console.WriteLine("Enter visitor name:");
                 string name = Console.ReadLine();
                 double st = Garson.Randomaiser(20,60);
                 if (choseCl == 0) { Visitors.Add(new Visitor() { Name = name, Stamina = st }); }
@@ -94,8 +94,12 @@ namespace HW_6P
                 Console.WriteLine($"{Fagots[f].GetType()} {Fagots[f].Name} vs {Bastards[b].GetType()} {Bastards[b].Name}");
                 var d = Garson.Randomaiser(0, Drinks.Count);
                 Console.WriteLine($"{Drinks[d].Volume}L {Drinks[d].Title} ({Drinks[d].Strength})");
-                Fagots[f].Action(Drinks[d], Bastards, b);
-                Bastards[b].Action(Drinks[d], Fagots, f);
+                Fagots[f].Action(Drinks, d, Bastards, b);
+                Bastards[b].Action(Drinks, d, Fagots, f);               
+                FagotsL = ConsciousnessTest(Fagots);
+                BastardsL = ConsciousnessTest(Bastards);
+                Console.WriteLine("press any key to continue");
+                Console.ReadKey();
                 if (Round == 10)
                 {
                     Round = 1;
@@ -104,8 +108,6 @@ namespace HW_6P
                 {
                     Round = Round++;
                 }
-                FagotsL = ConsciousnessTest(Fagots);
-                BastardsL = ConsciousnessTest(Bastards);
             }                       
         }
     }

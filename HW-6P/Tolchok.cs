@@ -7,10 +7,10 @@ namespace HW_6P
     public class Tolchok : Visitor
     {
         public bool Zombie { get; set; } = false;
-        public override void Action(Drink Drink, List<Visitor> Visitors, int e)
+        public override void Action(List<Drink> Drinks, int d, List<Visitor> Visitors, int e)
         {
             Console.WriteLine($"{GetType()} {Name} clinks with glass on the {Visitors[e].Name}'s forehead");
-            GetDrink(Drink);
+            GetDrink(Drinks[d]);
             ResurrectionByErection();
         }
         public void ResurrectionByErection()
