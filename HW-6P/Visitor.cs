@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace HW_6P
 {
@@ -16,6 +17,11 @@ namespace HW_6P
                 Console.WriteLine($"{Name} lost consciousness");
             }
 
+        }
+        public virtual void Action(Drink Drink, List<Visitor> Visitors, int e) 
+        {
+            Console.WriteLine($"{GetType()} {Name} clinks with glass on the {Visitors[e].Name}'s forehead");
+            GetDrink(Drink);
         }
     }
 }

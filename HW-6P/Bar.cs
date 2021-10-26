@@ -94,8 +94,8 @@ namespace HW_6P
                 Console.WriteLine($"{Fagots[f].GetType()} {Fagots[f].Name} vs {Bastards[b].GetType()} {Bastards[b].Name}");
                 var d = Garson.Randomaiser(0, Drinks.Count);
                 Console.WriteLine($"{Drinks[d].Volume}L {Drinks[d].Title} ({Drinks[d].Strength})");
-                Fagots[f].GetDrink(Drinks[d]);
-                Bastards[b].GetDrink(Drinks[d]);
+                Fagots[f].Action(Drinks[d], Bastards, b);
+                Bastards[b].Action(Drinks[d], Fagots, f);
                 if (Round == 10)
                 {
                     Round = 1;
