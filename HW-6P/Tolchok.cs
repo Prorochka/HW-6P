@@ -6,6 +6,7 @@ namespace HW_6P
 {
     public class Tolchok : Visitor
     {
+        public override string Class { get; } = "Tolchok";
         public bool Zombie { get; set; } = false;
         public override void Action(List<Drink> Drinks, int d, List<Visitor> Visitors, int e)
         {

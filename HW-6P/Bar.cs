@@ -4,11 +4,16 @@ using System.Text;
 
 namespace HW_6P
 {
+    class Team
+    {
+        public string Name { get; set; }
+        public List<Visitor> Members { get; set; }
+    }
     class Bar
     {
         public List<Drink> Drinks { get; set; }
-        public List<Visitor> Fagots { get; set; }
-        public List<Visitor> Bastards { get; set; }
+        public Team Fagots { get; set; }
+        public Team Bastards { get; set; }
         public void DrinkConstructor() 
         {
             Console.WriteLine("Enten drink name:");
@@ -47,18 +52,18 @@ namespace HW_6P
                 if (choseCl == 3) { Visitors.Add(new Biker() { Name = name, Stamina = st }); }
             }
         }
-        public bool ConsciousnessTest(List<Visitor> Visitors) 
+        public bool ConsciousnessTest(Team team) 
         {
             bool Loose = false;
             int a = 0;
-            foreach (Visitor Visitor in Visitors)
+            foreach (Visitor Visitor in team.Members)
             {
                 if (Visitor.InConsciousness == false) { a++; }
             }
             if (a == 10) 
             {
                 Loose = true;
-                Console.WriteLine($"{Visitors} are lost");
+                Console.WriteLine($"{team.Name} are lost");
             }
             return Loose;
         }
@@ -89,17 +94,16 @@ namespace HW_6P
             while (!FagotsL || !BastardsL)
             {
                 Console.WriteLine($"Round {Round}");
-                var f = FindParticipant(Round, Fagots);
-                var b = FindParticipant(Round, Bastards);
-                Console.WriteLine($"{Fagots[f].GetType()} {Fagots[f].Name} vs {Bastards[b].GetType()} {Bastards[b].Name}");
+                var f = FindParticipant(Round, Fagots.Members);
+                var b = FindParticipant(Round, Bastards.Members);
+                Console.WriteLine($"{Fagots.Members[f].GetType()} {Fagots.Members[f].Name} vs {Bastards.Members[b].GetType()} {Bastards.Members[b].Name}");
                 var d = Garson.Randomaiser(0, Drinks.Count);
                 Console.WriteLine($"{Drinks[d].Volume}L {Drinks[d].Title} ({Drinks[d].Strength})");
-                Fagots[f].Action(Drinks, d, Bastards, b);
-                Bastards[b].Action(Drinks, d, Fagots, f);               
+                Fagots.Members[f].Action(Drinks, d, Bastards.Members, b);
+                Bastards.Members[b].Action(Drinks, d, Fagots.Members, f);               
                 FagotsL = ConsciousnessTest(Fagots);
                 BastardsL = ConsciousnessTest(Bastards);
                 Console.WriteLine("press any key to continue");
-                Console.ReadKey();
                 if (Round == 10)
                 {
                     Round -= 9;

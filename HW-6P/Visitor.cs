@@ -5,6 +5,7 @@ namespace HW_6P
 {
     public class Visitor
     {
+        public virtual string Class { get; } = "Common Visitor";
         public string Name { get; set; }
         public double Stamina { get; set; }
         public bool InConsciousness { get; set; } = true;        
